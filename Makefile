@@ -69,10 +69,10 @@ OBJ_DIRS := $(addprefix ${OBJ_ROOT}, ${DIRS})
 DEP_DIRS := $(addprefix ${DEP_ROOT}, ${DIRS})
 INC_DIRS := ${INC_ROOT}
 
-SRCS_MAIN := $(foreach dir, $(filter ${SRC_ROOT}/push_swap/%, ${SRC_DIRS}), \
+SRCS_MAIN := $(foreach dir, $(filter-out ${SRC_ROOT}/checker/%, ${SRC_DIRS}), \
 	$(wildcard ${dir}*.c))
-SRCS_CHECKER := $(foreach dir, $(filter ${SRC_ROOT}/checker/%, ${SRC_DIRS}), \
-	$(wildcard ${dir}*.c))
+SRCS_CHECKER := $(foreach dir, $(filter-out ${SRC_ROOT}/push_swap/%, \
+	${SRC_DIRS}), $(wildcard ${dir}*.c))
 OBJS_MAIN := $(subst ${SRC_ROOT}, ${OBJ_ROOT}, ${SRCS_MAIN:.c=.o})
 OBJS_CHECKER := $(subst ${SRC_ROOT}, ${OBJ_ROOT}, ${SRCS_CHECKER:.c=.o})
 SRCS := $(foreach dir, ${SRC_DIRS}, $(wildcard ${dir}*.c))
