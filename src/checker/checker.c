@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 05:16:03 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/05/31 00:47:49 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/05/31 00:56:14 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "ft_stack.h"
 #include "ft_string.h"
 #include "actions.h"
-#include "checker.h"
+#include "common.h"
 
 static t_ps	*parseArgs(int argc, const char *argv[])
 {
@@ -127,7 +127,6 @@ int	main(int argc, char const *argv[])
 		ft_putstr_fd("OK\n", 1);
 	else
 		ft_putstr_fd("KO\n", 1);
-	ft_stackprint(ps->a, NULL, "->");
 	ft_stackdestroy(ps->a, NULL);
 	ft_stackdestroy(ps->b, NULL);
 	ft_free(ps);
