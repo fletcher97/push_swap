@@ -6,19 +6,19 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 06:02:03 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/05/30 06:13:22 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/05/31 00:46:09 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "actions.h"
 
-void rrb(t_ps *ps)
+void	rrb(t_ps *ps)
 {
-	t_stack_elem *tmp;
-	t_stack_elem *curr;
+	t_stack_elem	*tmp;
+	t_stack_elem	*curr;
 
 	if (ps->b->size < 2)
-		return;
+		return ;
 	curr = ps->b->top;
 	while (curr->prev->prev)
 		curr = curr->prev;

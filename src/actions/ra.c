@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 05:49:47 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/05/30 06:07:51 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/05/31 00:46:26 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 #include "ft_stack.h"
 #include "actions.h"
 
-void ra(t_ps *ps)
+void	ra(t_ps *ps)
 {
-	t_stack_elem *tmp;
-	t_stack_elem *curr;
+	t_stack_elem	*tmp;
+	t_stack_elem	*curr;
 
 	if (ps->a->size < 2)
-		return;
+		return ;
 	tmp = ps->a->top;
 	ps->a->top = ps->a->top->prev;
 	tmp->prev = NULL;

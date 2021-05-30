@@ -6,15 +6,15 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 05:44:28 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/05/30 05:46:31 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/05/31 00:44:23 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "actions.h"
 
-void pa(t_ps *ps)
+void	pa(t_ps *ps)
 {
 	if (ps->b->size < 1)
-		return;
+		return ;
 	ft_stackpush(ps->a, ft_stackpop(ps->b));
 }
