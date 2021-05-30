@@ -6,13 +6,13 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 05:49:47 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/05/30 06:01:51 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/05/30 08:28:33 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "actions.h"
 
-void rr(t_ps *ps)
+void rrr(t_ps *ps)
 {
 	rra(ps);
 	rrb(ps);
