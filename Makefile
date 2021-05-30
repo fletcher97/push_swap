@@ -15,16 +15,10 @@
 
 # Name of a single binary. Add as many variables as required by the project
 NAME1 = push_swap
-NAME2 = chacker
+NAME2 = checker
 
 # The names of all the binaries. Add aditional variables created above.
 NAMES = ${NAME1} ${NAME2}
-
-# Libft
-LIBFT_ROOT := ${LIB_ROOT}libft/
-LIBFT_INC := ${LIBFT_ROOT}inc/
-LIBFT := ${LIBFT_ROOT}bin/libft.a
-LIBS := -L${LIBFT_ROOT}bin -lft
 
 ################################################################################
 # Configs
@@ -62,16 +56,22 @@ OBJ_ROOT = obj/
 SRC_ROOT = src/
 TESTS_ROOT = tests/
 
-DIRS = push_swap/ checker/
+# Libft
+LIBFT_ROOT := ${LIB_ROOT}libft/
+LIBFT_INC := ${LIBFT_ROOT}inc/
+LIBFT := ${LIBFT_ROOT}bin/libft.a
+LIBS := -L${LIBFT_ROOT}bin -lft
+
+DIRS = push_swap/ checker/ actions/ common/
 
 SRC_DIRS := $(addprefix ${SRC_ROOT}, ${DIRS})
 OBJ_DIRS := $(addprefix ${OBJ_ROOT}, ${DIRS})
 DEP_DIRS := $(addprefix ${DEP_ROOT}, ${DIRS})
-INC_DIRS := ${INC_ROOT}
+INC_DIRS := ${INC_ROOT} ${LIBFT_INC}
 
-SRCS_MAIN := $(foreach dir, $(filter-out ${SRC_ROOT}/checker/%, ${SRC_DIRS}), \
+SRCS_MAIN := $(foreach dir, $(filter-out ${SRC_ROOT}checker/%, ${SRC_DIRS}), \
 	$(wildcard ${dir}*.c))
-SRCS_CHECKER := $(foreach dir, $(filter-out ${SRC_ROOT}/push_swap/%, \
+SRCS_CHECKER := $(foreach dir, $(filter-out ${SRC_ROOT}push_swap/%, \
 	${SRC_DIRS}), $(wildcard ${dir}*.c))
 OBJS_MAIN := $(subst ${SRC_ROOT}, ${OBJ_ROOT}, ${SRCS_MAIN:.c=.o})
 OBJS_CHECKER := $(subst ${SRC_ROOT}, ${OBJ_ROOT}, ${SRCS_CHECKER:.c=.o})
@@ -125,14 +125,17 @@ endif
 all: ${BINS}
 
 ${NAME1}: ${LIBFT} ${OBJS_MAIN}
-	${AT}printf "\033[38;5;46m[CREATING ${NAME} ]\033[0m\n" ${BLOCK}
+	${AT}printf "\033[38;5;46m[CREATING ${NAME1}]\033[0m\n" ${BLOCK}
 	${AT}mkdir -p ${BIN_ROOT}
 	${AT}${CC} ${CFLAGS} ${INCS} ${OBJS_MAIN} ${LIBS} -o ${BIN_ROOT}$@
 
 ${NAME2}: ${LIBFT} ${OBJS_CHECKER}
-	${AT}printf "\033[38;5;46m[CREATING ${NAME} ]\033[0m\n" ${BLOCK}
+	${AT}printf "\033[38;5;46m[CREATING ${NAME2}]\033[0m\n" ${BLOCK}
 	${AT}mkdir -p ${BIN_ROOT}
 	${AT}${CC} ${CFLAGS} ${INCS} ${OBJS_CHECKER} ${LIBS} -o ${BIN_ROOT}$@
+
+${LIBFT}:
+	${AT}make -C ${LIBFT_ROOT} ${BLOCK}
 
 ################################################################################
 # Setup Target
@@ -164,18 +167,22 @@ clean:
 	${AT}printf "\033[38;5;1m[REMOVING OBJECTS]\033[0m\n" ${BLOCK}
 	${AT}mkdir -p ${OBJ_ROOT} ${BLOCK}
 	${AT}find ${OBJ_ROOT} -type f -delete ${BLOCK}
+	${AT}make -C ${LIBFT_ROOT} clean${BLOCK}
 
 fclean: clean
 	${AT}printf "\033[38;5;1m[REMOVING BINARIES]\033[0m\n" ${BLOCK}
 	${AT}mkdir -p ${BIN_ROOT} ${BLOCK}
 	${AT}find ${BIN_ROOT} -type f -delete ${BLOCK}
+	${AT}make -C ${LIBFT_ROOT} fclean${BLOCK}
 
 clean_dep:
 	${AT}printf "\033[38;5;1m[REMOVING DEPENDENCIES]\033[0m\n" ${BLOCK}
 	${AT}mkdir -p ${DEP_ROOT} ${BLOCK}
 	${AT}find ${DEP_ROOT} -type f -delete ${BLOCK}
+	${AT}make -C ${LIBFT_ROOT} clean_dep${BLOCK}
 
 clean_all: clean_dep fclean
+	${AT}make -C ${LIBFT_ROOT} clean_all${BLOCK}
 
 re: fclean all
 
@@ -184,7 +191,10 @@ re: fclean all
 ################################################################################
 
 debug: CFLAGS += ${DFLAGS}
-debug: all
+debug: debug_lib all
+
+debug_lib:
+	${AT}make -C ${LIBFT_ROOT} debug${BLOCK}
 
 debug_re: fclean debug
 
@@ -224,7 +234,7 @@ define make_dep
 ${1} : ${2}
 	$${AT}printf "\033[38;5;13m[DEP]: \033[38;5;47m$$@\033[0m\n" $${BLOCK}
 	$${AT}mkdir -p $${@D} $${BLOCK}
-	$${AT}$${CC} -MM $$< -I $${INC_ROOT} -MF $$@ $${BLOCK}
+	$${AT}$${CC} -MM $$< $${INCS} -MF $$@ $${BLOCK}
 	$${AT}$${SED} 's|:| $$@ :|' $$@ $${SED_END} $${BLOCK}
 	$${AT}$${SED} '1 s|^|$${@D}/|' $$@ $${SED_END} $${BLOCK}
 endef
