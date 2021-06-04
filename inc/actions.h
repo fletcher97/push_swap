@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 05:32:17 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/05/31 00:49:01 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/06/04 10:15:19 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 typedef struct s_ps
 {
+	t_stack *as;
+	t_stack *bs;
 	t_stack	*a;
 	t_stack	*b;
 }	t_ps;
@@ -32,5 +34,17 @@ void	rrr(t_ps *ps);
 void	sa(t_ps *ps);
 void	sb(t_ps *ps);
 void	ss(t_ps *ps);
+
+void	print_pa(t_ps *ps);
+void	print_pb(t_ps *ps);
+void	print_ra(t_ps *ps);
+void	print_rb(t_ps *ps);
+void	print_rr(t_ps *ps);
+void	print_rra(t_ps *ps);
+void	print_rrb(t_ps *ps);
+void	print_rrr(t_ps *ps);
+void	print_sa(t_ps *ps);
+void	print_sb(t_ps *ps);
+void	print_ss(t_ps *ps);
 
 #endif

@@ -6,9 +6,11 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 05:49:47 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/05/31 00:46:26 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/06/04 10:22:24 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_stdio.h"
 
 #include "ft_stdlib.h"
 #include "ft_stack.h"
@@ -28,4 +30,10 @@ void	ra(t_ps *ps)
 	while (curr->prev)
 		curr = curr->prev;
 	curr->prev = tmp;
+}
+
+void print_ra(t_ps *ps)
+{
+	ft_putstr_fd("ra\n", STDOUT);
+	ra(ps);
 }

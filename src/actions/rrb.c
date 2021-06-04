@@ -6,9 +6,11 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 06:02:03 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/05/31 00:46:09 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/06/04 10:22:45 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_stdio.h"
 
 #include "actions.h"
 
@@ -26,4 +28,10 @@ void	rrb(t_ps *ps)
 	curr->prev = NULL;
 	tmp->prev = ps->b->top;
 	ps->b->top = tmp;
+}
+
+void print_rrb(t_ps *ps)
+{
+	ft_putstr_fd("rrb\n", STDOUT);
+	rrb(ps);
 }

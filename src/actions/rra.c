@@ -6,9 +6,11 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 06:02:03 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/05/31 00:46:14 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/06/04 10:22:41 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_stdio.h"
 
 #include "actions.h"
 
@@ -26,4 +28,10 @@ void	rra(t_ps *ps)
 	curr->prev = NULL;
 	tmp->prev = ps->a->top;
 	ps->a->top = tmp;
+}
+
+void print_rra(t_ps *ps)
+{
+	ft_putstr_fd("rra\n", STDOUT);
+	rra(ps);
 }
