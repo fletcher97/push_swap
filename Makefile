@@ -42,7 +42,8 @@ VERBOSE = 1
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -Wvla
-DFLAGS = -g -fsanitize=address
+DFLAGS = -g
+SANITIZE = -fsanitize=address
 
 ################################################################################
 # Folders & Files
@@ -190,8 +191,14 @@ re: fclean all
 # Debug Targets
 ################################################################################
 
+debug_asan: CFLAGS += ${DFLAGS} ${SANITIZE}
+debug_asan: debug_lib_asan all
+
 debug: CFLAGS += ${DFLAGS}
 debug: debug_lib all
+
+debug_lib_asan:
+	${AT}make -C ${LIBFT_ROOT} debug_asan${BLOCK}
 
 debug_lib:
 	${AT}make -C ${LIBFT_ROOT} debug${BLOCK}
