@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   issorted.c                                         :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/30 07:46:06 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/06/04 07:51:51 by mgueifao         ###   ########.fr       */
+/*   Created: 2021/05/30 05:34:15 by mgueifao          #+#    #+#             */
+/*   Updated: 2021/06/06 10:55:24 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stack.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-char issorted(t_stack *s)
-{
-	t_content tmp;
-	t_stack_elem *curr;
+#include "actions.h"
 
-	curr = s->top;
-	if (curr)
-		tmp = curr->cont;
-	while(curr->prev)
-	{
-		if (tmp.i > curr->prev->cont.i)
-			return (0);
-		curr = curr->prev;
-		tmp = curr->cont;
-	}
-	return (1);
-}
+void bring_up(t_ps *ps, int sizea, int sizeb);
+void sswap(t_ps *ps, int sizea, int sizeb);
+
+#endif
