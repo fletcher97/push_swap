@@ -21,10 +21,12 @@
 # Name of a single binary. Add as many variables as required by the project
 NAME1 := push_swap
 NAME2 := checker
+NAME3 := gen
+NAME4 := test
 
 # The names of all the binaries. Add aditional variables created above separated
 # by space.
-NAMES := ${NAME1} ${NAME2}
+NAMES := ${NAME1} ${NAME2} ${NAME3} ${NAME4}
 
 ################################################################################
 # Configs
@@ -112,6 +114,8 @@ DEFAULT_LIB_RULES += debug debug_re debug_asan debug_asan_re
 # DIRS += folder1/:folder3/:folder4/
 DIRS := common/:actions/:push_swap/
 DIRS += common/:actions/:checker/
+DIRS += tests/gen/
+DIRS += tests/test/
 
 SRC_DIRS_LIST := $(addprefix ${SRC_ROOT},${DIRS})
 SRC_DIRS_LIST := $(foreach dl,${SRC_DIRS_LIST},$(subst :,:${SRC_ROOT},${dl}))
@@ -187,8 +191,17 @@ ${BIN_ROOT}${NAME1}: ${LIBFT} $$(call get_files,$${@F},$${OBJS_LIST})
 	${AT}mkdir -p ${@D} ${BLOCK}
 	${AT}${CC} ${CFLAGS} ${INCS} $(call get_files,${@F},${OBJS_LIST}) ${LIBS}\
 		-o $@ ${BLOCK}
-
 ${BIN_ROOT}${NAME2}: ${LIBFT} $$(call get_files,$${@F},$${OBJS_LIST})
+	${AT}printf "\033[33m[CREATING ${@F}]\033[0m\n" ${BLOCK}
+	${AT}mkdir -p ${@D} ${BLOCK}
+	${AT}${CC} ${CFLAGS} ${INCS} $(call get_files,${@F},${OBJS_LIST}) ${LIBS}\
+		-o $@ ${BLOCK}
+${BIN_ROOT}${NAME3}: $$(call get_files,$${@F},$${OBJS_LIST})
+	${AT}printf "\033[33m[CREATING ${@F}]\033[0m\n" ${BLOCK}
+	${AT}mkdir -p ${@D} ${BLOCK}
+	${AT}${CC} ${CFLAGS} ${INCS} $(call get_files,${@F},${OBJS_LIST}) ${LIBS}\
+		-o $@ ${BLOCK}
+${BIN_ROOT}${NAME4}: $$(call get_files,$${@F},$${OBJS_LIST})
 	${AT}printf "\033[33m[CREATING ${@F}]\033[0m\n" ${BLOCK}
 	${AT}mkdir -p ${@D} ${BLOCK}
 	${AT}${CC} ${CFLAGS} ${INCS} $(call get_files,${@F},${OBJS_LIST}) ${LIBS}\
