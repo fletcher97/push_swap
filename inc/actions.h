@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 05:32:17 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/06/04 10:15:19 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/07 17:20:33 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define ACTIONS_H
 
 # include "ft_stack.h"
+
+# define OPS {"sa", "sb", "ss", "ra", "rb", "rr", "rra", "rrb", "rrr"}
 
 typedef struct s_ps
 {
@@ -46,5 +48,7 @@ void	print_rrr(t_ps *ps);
 void	print_sa(t_ps *ps);
 void	print_sb(t_ps *ps);
 void	print_ss(t_ps *ps);
+
+char	*get_action(int i);
 
 #endif

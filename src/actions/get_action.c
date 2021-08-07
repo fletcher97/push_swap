@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   common.h                                           :+:      :+:    :+:   */
+/*   get_action.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/30 23:50:11 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/07 17:20:08 by mgueifao         ###   ########.fr       */
+/*   Created: 2021/08/07 16:16:44 by mgueifao          #+#    #+#             */
+/*   Updated: 2021/08/07 16:20:21 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COMMON_H
-# define COMMON_H
+#include "actions.h"
+#include "ft_string.h"
 
-# include "ft_stack.h"
-# include "actions.h"
-
-char	issorted(t_stack *s);
-t_ps	*parseString(const char *s);
-t_ps	*parseArgs(int argc, const char *argv[]);
-int		get_median(t_stack *s, int size);
-t_ps	*dup_ps(t_ps *ps);
-void	destroy_ps(t_ps *ps);
-int		sorts(t_ps *ps, t_stack *ops);
-
-#endif
+char	*get_action(int i)
+{
+	static char	*ops[] = OPS;
+	return ft_strdup(ops[i]);
+}
