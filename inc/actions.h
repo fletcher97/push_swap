@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 05:32:17 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/07 17:20:33 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/07 17:42:18 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "ft_stack.h"
 
-# define OPS {"sa", "sb", "ss", "ra", "rb", "rr", "rra", "rrb", "rrr"}
+# define A {"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", "rra", "rrb", "rrr"}
 
 typedef struct s_ps
 {

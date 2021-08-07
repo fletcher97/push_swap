@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 07:46:06 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/07 16:50:17 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/07 17:49:55 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	sorts(t_ps *ps, t_stack *ops)
 		run(s, aux->cont.str);
 		aux = aux->prev;
 	}
-	ret = issorted(s->a);
+	ret = s->b->size == 0 && issorted(s->a);
 	destroy_ps(s);
 	return (ret);
 }

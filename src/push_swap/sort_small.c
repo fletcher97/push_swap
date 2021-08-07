@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 16:06:55 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/07 16:53:15 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/07 17:51:50 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ static int	get_ops(t_ps *ps, int i, t_stack *out)
 	int ac;
 	t_content aux;
 
-	if (i == 0 && ps->b->size == 0 && sorts(ps, out))
+	if (i == 0 && sorts(ps, out))
 		return (1);
 	else if (i == 0)
 		return (0);
 	ac = -1;
-	while (++ac < 9)
+	while (++ac < 11)
 	{
 		aux.str = get_action(ac);
 		ft_stackpush(out, aux);
