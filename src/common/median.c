@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 00:58:54 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/06/06 08:02:36 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/08 19:15:24 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,37 @@ int	get_median(t_stack *s, int size)
 		ret = ((arr[(size / 2) - 1] + arr[size / 2]) / 2);
 	else
 		ret = arr[size / 2];
+	ft_free(arr);
+	return (ret);
+}
+
+int	get_median2(t_stack *s, int size, int big)
+{
+	int *arr;
+	int ret;
+
+	if (size > 0)
+		arr = stack_to_array(s, size);
+	else
+		arr = stack_to_array_bot(s, size * -1);
+	size = ft_abs(size);
+	quicksorti(arr, 0, size - 1);
+	if (big)
+		ret = arr[size / 2 + size / 4];
+	else
+		ret = arr[size / 2 - size / 4];
+	ft_free(arr);
+	return (ret);
+}
+
+int	get_val_at_sorted(t_stack *s, int pos)
+{
+	int	*arr;
+	int ret;
+
+	arr = stack_to_array(s, s->size);
+	quicksorti(arr, 0, s->size - 1);
+	ret = arr[pos];
 	ft_free(arr);
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 08:27:51 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/07 17:18:14 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/08 02:01:34 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 static void pick(t_ps *ps)
 {
-	if (ps->a->size <= 5)
+	if (ps->a->size < 5)
 		execute_small(ps);
 	else if (ps->a->size <= 100)
 		execute_med(ps);
