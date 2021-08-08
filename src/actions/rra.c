@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 06:02:03 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/06/04 10:22:41 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/09 00:13:25 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,25 @@ void	rra(t_ps *ps)
 	ps->a->top = tmp;
 }
 
-void print_rra(t_ps *ps)
+void	print_rra(t_ps *ps)
 {
 	ft_putstr_fd("rra\n", STDOUT);
+	rra(ps);
+}
+
+void	push_rra(t_ps *ps)
+{
+	t_list	*str;
+
+	str = malloc(sizeof(t_list));
+	if (!str)
+		return ;
+	str->content = ft_strdup("rra");
+	if (!str->content)
+	{
+		free(str);
+		return ;
+	}
+	ft_lstadd_back(&(ps->out), str);
 	rra(ps);
 }

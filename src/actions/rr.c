@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 05:49:47 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/06/04 10:25:39 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/09 00:13:04 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,25 @@ void	rr(t_ps *ps)
 	rb(ps);
 }
 
-void print_rr(t_ps *ps)
+void	print_rr(t_ps *ps)
 {
 	ft_putstr_fd("rr\n", STDOUT);
+	rr(ps);
+}
+
+void	push_rr(t_ps *ps)
+{
+	t_list	*str;
+
+	str = malloc(sizeof(t_list));
+	if (!str)
+		return ;
+	str->content = ft_strdup("rr");
+	if (!str->content)
+	{
+		free(str);
+		return ;
+	}
+	ft_lstadd_back(&(ps->out), str);
 	rr(ps);
 }

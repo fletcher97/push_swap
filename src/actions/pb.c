@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 05:44:28 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/06/04 10:22:17 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/09 00:13:08 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,25 @@ void	pb(t_ps *ps)
 	ft_stackpush(ps->b, ft_stackpop(ps->a));
 }
 
-void print_pb(t_ps *ps)
+void	print_pb(t_ps *ps)
 {
 	ft_putstr_fd("pb\n", STDOUT);
+	pb(ps);
+}
+
+void	push_pb(t_ps *ps)
+{
+	t_list	*str;
+
+	str = malloc(sizeof(t_list));
+	if (!str)
+		return ;
+	str->content = ft_strdup("pb");
+	if (!str->content)
+	{
+		free(str);
+		return ;
+	}
+	ft_lstadd_back(&(ps->out), str);
 	pb(ps);
 }
