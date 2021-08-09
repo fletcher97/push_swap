@@ -10,16 +10,41 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_stdio.h"
+#include "ft_string.h"
+
 #include "actions.h"
+
+void	print_op_pa(t_list **l)
+{
+	char	*op;
+
+	if (!(*l)->next)
+		return ft_putstr_fd("pa", 1);
+	op = (char *)(*l)->next->content;
+	if (ft_strcmp(op, "rrb") || !(*l)->next->next)
+		return ft_putstr_fd("pa", 1);
+	op = (char *)(*l)->next->next->content;
+	if (ft_strcmp(op, "pb"))
+		return ft_putstr_fd("pa", 1);
+	ft_putstr_fd("rrb", 1);
+	ft_putstr_fd("sb", 1);
+	*l = (*l)->next->next;
+}
 
 void	optimize(t_ps *ps)
 {
 	t_list	*curr;
+	char	*op;
 
 	curr = ps->out;
 	while (curr)
 	{
-		if (curr->content == "pa")
-			check_pa(curr, ps);
+		op = curr->content;
+		if (!ft_strcmp(op, "pa"))
+			print_op_pa(&curr);
+		else
+			ft_putstr_fd(op, 1);
+		curr = curr->next;
 	}
 }

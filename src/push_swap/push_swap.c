@@ -18,11 +18,11 @@
 
 static void pick(t_ps *ps)
 {
-	ps->out = ft_stacknew();
-	if (!ps->out)
-		ft_putstr_fd("Error\n", STDERR);
-	if (!ps->out)
-		return ;
+	ps->out = NULL;
+//	if (!ps->out)
+//		ft_putstr_fd("Error\n", STDERR);
+//	if (!ps->out)
+//		return ;
 	if (ps->a->size < 5)
 		execute_small(ps);
 	// else if (ps->a->size <= 100)
