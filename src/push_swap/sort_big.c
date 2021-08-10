@@ -224,7 +224,7 @@ void	execute_big(t_ps *ps)
 	// char buff[5];
 	// read(0, &buff, 1);
 	if (ps->bs->size == 0 && issorted(ps->a))
-		return ;
+		return (optimize(ps));
 	if ((ps->as->size && ft_abs(ft_stackpeek(ps->as).i) <= 2)
 		|| (ps->bs->size && ft_abs(ft_stackpeek(ps->bs).i) <= 2 && (!ps->as->size || ft_abs(ft_stackpeek(ps->as).i) <= 2)))
 		sort(ps);

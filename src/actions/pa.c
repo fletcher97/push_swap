@@ -36,12 +36,13 @@ void	push_pa(t_ps *ps)
 	str = ft_malloc(sizeof(t_list));
 	if (!str)
 		return ;
-	str->content = ft_strdup("pa");
+	str->content = ft_strdup("pa\n");
 	if (!str->content)
 	{
 		ft_free(str);
 		return ;
 	}
+	str->next = NULL;
 	ft_lstadd_back(&(ps->out), str);
 	pa(ps);
 }
