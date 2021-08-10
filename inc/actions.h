@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 05:32:17 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/06/04 10:15:19 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/09 00:07:17 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define ACTIONS_H
 
 # include "ft_stack.h"
+# include "ft_list.h"
+
+# define A {"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", "rra", "rrb", "rrr"}
 
 typedef struct s_ps
 {
@@ -21,6 +24,7 @@ typedef struct s_ps
 	t_stack *bs;
 	t_stack	*a;
 	t_stack	*b;
+	t_list *out;
 }	t_ps;
 
 void	pa(t_ps *ps);
@@ -46,5 +50,19 @@ void	print_rrr(t_ps *ps);
 void	print_sa(t_ps *ps);
 void	print_sb(t_ps *ps);
 void	print_ss(t_ps *ps);
+
+void	push_pa(t_ps *ps);
+void	push_pb(t_ps *ps);
+void	push_ra(t_ps *ps);
+void	push_rb(t_ps *ps);
+void	push_rr(t_ps *ps);
+void	push_rra(t_ps *ps);
+void	push_rrb(t_ps *ps);
+void	push_rrr(t_ps *ps);
+void	push_sa(t_ps *ps);
+void	push_sb(t_ps *ps);
+void	push_ss(t_ps *ps);
+
+char	*get_action(int i);
 
 #endif
