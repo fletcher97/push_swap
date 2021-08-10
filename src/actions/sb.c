@@ -42,12 +42,13 @@ void	push_sb(t_ps *ps)
 	str = ft_malloc(sizeof(t_list));
 	if (!str)
 		return ;
-	str->content = ft_strdup("sb");
+	str->content = ft_strdup("sb\n");
 	if (!str->content)
 	{
 		ft_free(str);
 		return ;
 	}
+	str->next = NULL;
 	ft_lstadd_back(&(ps->out), str);
 	sb(ps);
 }

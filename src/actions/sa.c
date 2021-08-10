@@ -42,12 +42,13 @@ void	push_sa(t_ps *ps)
 	str = ft_malloc(sizeof(t_list));
 	if (!str)
 		return ;
-	str->content = ft_strdup("sa");
+	str->content = ft_strdup("sa\n");
 	if (!str->content)
 	{
 		ft_free(str);
 		return ;
 	}
+	str->next = NULL;
 	ft_lstadd_back(&(ps->out), str);
 	sa(ps);
 }
