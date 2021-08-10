@@ -17,11 +17,13 @@
 
 # define MED_MARGIN 20
 
-void bring_up(t_ps *ps, int sizea, int sizeb);
-void sswap(t_ps *ps, int sizea, int sizeb);
+void	bring_up(t_ps *ps, int sizea, int sizeb);
+void	sswap(t_ps *ps, int sizea, int sizeb);
 
-void execute_small(t_ps *ps);
-void execute_med(t_ps *ps);
-void execute_big(t_ps *ps);
+void	execute_small(t_ps *ps);
+void	execute_med(t_ps *ps);
+void	execute_big(t_ps *ps);
+
+void	optimize(t_ps *ps);
 
 #endif
