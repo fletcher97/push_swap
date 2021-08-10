@@ -17,18 +17,18 @@ void bring_up(t_ps *ps, int sizea, int sizeb)
 {
 	while (sizea < 0 && sizeb < 0)
 	{
-		print_rrr(ps);
+		push_rrr(ps);
 		sizea++;
 		sizeb++;
 	}
 	while (sizea < 0)
 	{
-		print_rra(ps);
+		push_rra(ps);
 		sizea++;
 	}
 	while (sizeb < 0)
 	{
-		print_rrb(ps);
+		push_rrb(ps);
 		sizeb++;
 	}
 }
@@ -38,10 +38,10 @@ void sswap(t_ps *ps, int s1, int s2)
 	if (ft_abs(s1) == 2 && ps->a->top->cont.i > ps->a->top->prev->cont.i)
 	{
 		if (ft_abs(s2) == 2 && ps->b->top->cont.i < ps->b->top->prev->cont.i)
-			print_ss(ps);
+			push_ss(ps);
 		else
-			print_sa(ps);
+			push_sa(ps);
 	}
 	else if (ft_abs(s2) == 2 && ps->b->top->cont.i < ps->b->top->prev->cont.i)
-		print_sb(ps);
+		push_sb(ps);
 }
