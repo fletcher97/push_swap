@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 05:36:59 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/09 00:14:31 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/14 15:34:22 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	sb(t_ps *ps)
 	ft_stackpush(ps->b, tmp2);
 }
 
-void print_sb(t_ps *ps)
+void	print_sb(t_ps *ps)
 {
 	ft_putstr_fd("sb\n", STDOUT);
 	sb(ps);

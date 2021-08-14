@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 08:27:51 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/08 23:43:19 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/14 16:41:02 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,11 @@
 #include "push_swap.h"
 #include "common.h"
 
-static void pick(t_ps *ps)
+static void	pick(t_ps *ps)
 {
 	ps->out = NULL;
-//	if (!ps->out)
-//		ft_putstr_fd("Error\n", STDERR);
-//	if (!ps->out)
-//		return ;
 	if (ps->a->size < 5)
 		execute_small(ps);
-	// else if (ps->a->size <= 100)
-	// 	execute_med(ps);
 	else
 		execute_big(ps);
 }

@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 05:36:59 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/09 00:14:48 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/14 15:34:28 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ss(t_ps *ps)
 	sb(ps);
 }
 
-void print_ss(t_ps *ps)
+void	print_ss(t_ps *ps)
 {
 	ft_putstr_fd("ss\n", STDOUT);
 	ss(ps);

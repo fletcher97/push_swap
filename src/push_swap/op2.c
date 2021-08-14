@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 02:06:19 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/13 01:02:37 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/14 15:55:11 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,13 @@ int	rem_dups(t_list *l)
 {
 	t_list	*curr;
 	t_list	*tmp;
-	int ret;
+	int		ret;
 
 	ret = 0;
 	curr = l;
 	while (curr && curr->next)
 	{
-		if (!ft_strcmp(curr->next->content, "sa\n")
-			&& !ft_strcmp(curr->next->content, "sb\n")
-			&& !ft_strcmp(curr->next->content, "ss\n"))
+		if (((char *)curr->next->content)[0] != 's')
 		{
 			tmp = curr->next;
 			while (tmp->next

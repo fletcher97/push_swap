@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 08:24:16 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/12 01:50:01 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/14 15:52:57 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,13 @@ void	replace_content(t_list *l, char *str)
 {
 	ft_free(l->content);
 	l->content = ft_strdup(str);
+}
+
+void	print_list(t_list *curr)
+{
+	while (curr)
+	{
+		ft_putstr_fd(curr->content, 1);
+		curr = curr->next;
+	}
 }
