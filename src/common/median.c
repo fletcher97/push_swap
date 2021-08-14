@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 00:58:54 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/08 19:15:24 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/14 15:36:59 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 static int	*stack_to_array_bot(t_stack *s, int size)
 {
-	int	*ret;
-	t_stack_elem *curr;
-	int	i;
+	int				*ret;
+	t_stack_elem	*curr;
+	int				i;
 
 	ret = ft_malloc(sizeof(int) * size);
 	curr = s->top;
@@ -34,9 +34,9 @@ static int	*stack_to_array_bot(t_stack *s, int size)
 
 static int	*stack_to_array(t_stack *s, int size)
 {
-	int	*ret;
-	t_stack_elem *curr;
-	int	i;
+	int				*ret;
+	t_stack_elem	*curr;
+	int				i;
 
 	ret = ft_malloc(sizeof(int) * size);
 	curr = s->top;
@@ -51,8 +51,8 @@ static int	*stack_to_array(t_stack *s, int size)
 
 int	get_median(t_stack *s, int size)
 {
-	int *arr;
-	int ret;
+	int	*arr;
+	int	ret;
 
 	if (size > 0)
 		arr = stack_to_array(s, size);
@@ -70,8 +70,8 @@ int	get_median(t_stack *s, int size)
 
 int	get_median2(t_stack *s, int size, int big)
 {
-	int *arr;
-	int ret;
+	int	*arr;
+	int	ret;
 
 	if (size > 0)
 		arr = stack_to_array(s, size);
@@ -90,7 +90,7 @@ int	get_median2(t_stack *s, int size, int big)
 int	get_val_at_sorted(t_stack *s, int pos)
 {
 	int	*arr;
-	int ret;
+	int	ret;
 
 	arr = stack_to_array(s, s->size);
 	quicksorti(arr, 0, s->size - 1);

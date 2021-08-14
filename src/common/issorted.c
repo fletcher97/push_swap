@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 07:46:06 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/07 17:49:55 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/14 15:38:10 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 #include "common.h"
 #include "actions.h"
 
-char issorted(t_stack *s)
+char	issorted(t_stack *s)
 {
-	t_content tmp;
-	t_stack_elem *curr;
+	t_content		tmp;
+	t_stack_elem	*curr;
 
 	curr = s->top;
 	if (curr)
 		tmp = curr->cont;
-	while(curr->prev)
+	while (curr->prev)
 	{
 		if (tmp.i > curr->prev->cont.i)
 			return (0);
@@ -61,11 +61,11 @@ static void	run(t_ps *ps, char *op)
 
 int	sorts(t_ps *ps, t_stack *ops)
 {
-	t_ps *s;
-	int ret;
-	t_stack_elem *aux;
+	t_ps			*s;
+	int				ret;
+	t_stack_elem	*aux;
 
-	if (!ps || !ps->a || !ps->b|| !ops || !ops)
+	if (!ps || !ps->a || !ps->b || !ops || !ops)
 		return (0);
 	s = dup_ps(ps);
 	aux = ops->top;

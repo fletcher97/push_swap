@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 16:06:55 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/07 17:51:50 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/14 16:41:36 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 static int	get_ops(t_ps *ps, int i, t_stack *out)
 {
-	int ac;
-	t_content aux;
+	int			ac;
+	t_content	aux;
 
 	if (i == 0 && sorts(ps, out))
 		return (1);
@@ -48,11 +48,11 @@ void	free_cont(t_content cont)
 	free(cont.str);
 }
 
-void execute_small(t_ps *ps)
+void	execute_small(t_ps *ps)
 {
-	int found;
-	t_stack *out;
-	int i;
+	int		found;
+	t_stack	*out;
+	int		i;
 
 	if (issorted(ps->a))
 		return ;

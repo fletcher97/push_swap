@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 00:04:11 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/12 02:27:06 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/14 15:53:18 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@
 static int	check_next(t_list *l, char *op)
 {
 	if (ft_strcmp(op, "ra\n") || ft_strcmp(op, "rra\n"))
-		return ft_strcmp(l->content, "ra\n") || ft_strcmp(l->content, "sa\n")
-			|| ft_strcmp(l->content, "rra\n");
+		return (ft_strcmp(l->content, "ra\n") || ft_strcmp(l->content, "sa\n")
+			|| ft_strcmp(l->content, "rra\n"));
 	if (ft_strcmp(op, "rb\n") || ft_strcmp(op, "rrb\n"))
-		return ft_strcmp(l->content, "rb\n") || ft_strcmp(l->content, "sb\n")
-			|| ft_strcmp(l->content, "rrb\n");
+		return (ft_strcmp(l->content, "rb\n") || ft_strcmp(l->content, "sb\n")
+			|| ft_strcmp(l->content, "rrb\n"));
 	return (0);
 }
 
@@ -62,9 +62,9 @@ int	print_op_r(t_list **l)
 	while (curr->next && check_next(curr->next, (*l)->content))
 		curr = curr->next;
 	if (curr->next && ((ft_strcmp((*l)->content, "ra\n")
-		&& ft_strcmp(curr->next->content, "rb\n"))
-		|| (ft_strcmp((*l)->content, "rb\n")
-		&& ft_strcmp(curr->next->content, "ra\n"))))
+				&& ft_strcmp(curr->next->content, "rb\n"))
+			|| (ft_strcmp((*l)->content, "rb\n")
+				&& ft_strcmp(curr->next->content, "ra\n"))))
 	{
 		replace_content(*l, "rr\n");
 		rem_next(curr);
@@ -81,9 +81,9 @@ int	print_op_rr(t_list **l)
 	while (curr->next && check_next(curr->next, (*l)->content))
 		curr = curr->next;
 	if (curr->next && ((ft_strcmp((*l)->content, "rra\n")
-		&& ft_strcmp(curr->next->content, "rrb\n"))
-		|| (ft_strcmp((*l)->content, "rrb\n")
-		&& ft_strcmp(curr->next->content, "rra\n"))))
+				&& ft_strcmp(curr->next->content, "rrb\n"))
+			|| (ft_strcmp((*l)->content, "rrb\n")
+				&& ft_strcmp(curr->next->content, "rra\n"))))
 	{
 		replace_content(*l, "rrr\n");
 		rem_next(curr);
@@ -106,24 +106,17 @@ void	optimize(t_ps *ps)
 		while (curr)
 		{
 			op = curr->content;
-			if ((ft_strcmp(op, "pa\n") || ft_strcmp(op, "pb\n"))
-				&& print_op_p(&curr))
-				changed = 1;
-			else if ((ft_strcmp(op, "ra\n") || ft_strcmp(op, "rb\n"))
-				&& print_op_r(&curr))
-				changed = 1;
-			else if ((ft_strcmp(op, "rra\n") || ft_strcmp(op, "rrb\n"))
-				&& (print_op_rr(&curr)))
+			if (((ft_strcmp(op, "pa\n") || ft_strcmp(op, "pb\n"))
+					&& print_op_p(&curr))
+				|| ((ft_strcmp(op, "ra\n") || ft_strcmp(op, "rb\n"))
+					&& print_op_r(&curr))
+				|| ((ft_strcmp(op, "rra\n") || ft_strcmp(op, "rrb\n"))
+					&& (print_op_rr(&curr))))
 				changed = 1;
 			curr = curr->next;
 		}
 		changed = changed || rem_dups(ps->out);
 	}
-	curr = ps->out;
-	while (curr)
-	{
-		ft_putstr_fd(curr->content, 1);
-		curr = curr->next;
-	}
+	print_list(ps->out);
 	ft_lstclear(&(ps->out), ft_free);
 }

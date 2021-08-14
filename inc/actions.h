@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 05:32:17 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/09 00:07:17 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/14 16:43:32 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,13 @@
 # include "ft_stack.h"
 # include "ft_list.h"
 
-# define A {"sa", "sb", "ss", "pa", "pb", "ra", "rb", "rr", "rra", "rrb", "rrr"}
-
 typedef struct s_ps
 {
-	t_stack *as;
-	t_stack *bs;
+	t_stack	*as;
+	t_stack	*bs;
 	t_stack	*a;
 	t_stack	*b;
-	t_list *out;
+	t_list	*out;
 }	t_ps;
 
 void	pa(t_ps *ps);
