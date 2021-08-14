@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 16:07:09 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/14 16:39:37 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/14 18:28:56 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,26 @@ static void	set_pushed(t_ps *ps, t_fucknorm fn, int size, int flag)
 	t_content	u;
 	t_content	d;
 	t_content	left;
-	t_stack		*s;
+	t_stack		*s1;
+	t_stack		*s2;
 
 	u.i = fn.u;
 	d.i = fn.d * -1;
-	left.i = ft_abs(size) - (u.i + d.i);
+	left.i = ft_abs(size) - (fn.u + fn.d);
 	if (size > 0 && left.i < (int)ps->a->size)
 		left.i = left.i * -1;
-	s = ps->as;
+	s1 = ps->as;
+	s2 = ps->bs;
 	if (flag)
-		s = ps->bs;
+		s1 = ps->bs;
+	if (flag)
+		s2 = ps->as;
 	if (d.i)
-		ft_stackpush(s, d);
+		ft_stackpush(s1, d);
 	if (u.i)
-		ft_stackpush(s, u);
+		ft_stackpush(s1, u);
 	if (left.i)
-		ft_stackpush(s, left);
+		ft_stackpush(s2, left);
 }
 
 static void	pushb(t_ps *ps, int size, int size2)
