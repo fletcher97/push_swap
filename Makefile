@@ -54,7 +54,7 @@ CREATE_LIB_TARGETS := 1
 ################################################################################
 
 # Compiler
-CC := gcc
+CC := clang
 
 # Compiler flags
 CFLAGS := -Wall -Wextra -Werror -Wvla
@@ -68,8 +68,12 @@ ASAN += -fno-omit-frame-pointer -fno-common
 ASAN += -fsanitize=pointer-subtract -fsanitize=pointer-compare
 # Technicaly UBSan but works with ASan
 ASAN += -fsanitize=undefined
+# Technicaly LSan but works with ASan
+ASAN += -fsanitize=leak
 # Thread sanitizing flags
 TSAN := -fsanitize=thread
+# Memory sanitizer flags
+MSAN := -fsanitize=memory -fsanitize-memory-track-origins
 
 ################################################################################
 # Root Folders
@@ -114,7 +118,7 @@ DEFAULT_LIB_RULES += debug debug_re debug_asan debug_asan_re
 # All projects with a copy of this makefile v2.2 and up ate garanteed to work
 # with these targets. If you wish to not use them just comment the lines you
 # don't want.
-DEFAULT_LIB_RULES += debug_tsan debug_tsan_re
+DEFAULT_LIB_RULES += debug_tsan debug_tsan_re debug_msan debug_msan_re
 
 ################################################################################
 # Content Folders
@@ -258,11 +262,16 @@ debug_asan: $$(call get_lib_target,$${DEFAULT_LIBS},$$@) obj/asan/asan.o all
 debug_tsan: CFLAGS += ${DFLAGS} ${TSAN}
 debug_tsan: $$(call get_lib_target,$${DEFAULT_LIBS},$$@) all
 
+debug_msan: CFLAGS += ${DFLAGS} ${MSAN}
+debug_msan: $$(call get_lib_target,$${DEFAULT_LIBS},$$@) all
+
 debug_re: fclean debug
 
 debug_asan_re: fclean debug_asan
 
 debug_tsan_re: fclean debug_tsan
+
+debug_msan_re: fclean debug_msan
 
 ################################################################################
 # Utility Targets
