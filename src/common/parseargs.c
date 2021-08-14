@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 01:28:21 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/14 15:40:59 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/14 17:34:52 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static int	check_int(const char *n)
 	if (n[0] == '-' && (ft_strlen(n) > 11 || (ft_strlen(n) == 11
 				&& ft_memcmp(n, "-2147483648", 11) > 0)))
 		return (0);
-	if ((ft_strlen(n) == 10 && ft_memcmp(n, "2147483647", 11) > 0)
-		|| ft_strlen(n) > 10)
+	if (n[0] != '-' && ((ft_strlen(n) == 10
+			&& ft_memcmp(n, "2147483647", 11) > 0) || ft_strlen(n) > 10))
 		return (0);
 	return (1);
 }
