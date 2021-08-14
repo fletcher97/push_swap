@@ -6,12 +6,13 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 08:24:16 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/14 15:52:57 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/14 17:20:33 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "actions.h"
 #include "ft_stdlib.h"
+#include "ft_stdio.h"
 #include "ft_list.h"
 #include "ft_string.h"
 
