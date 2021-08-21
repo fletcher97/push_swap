@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 23:50:11 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/08 19:16:42 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/21 18:55:59 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ void	destroy_ps(t_ps *ps);
 int		sorts(t_ps *ps, t_stack *ops);
 int		get_val_at_sorted(t_stack *s, int pos);
 int		get_median2(t_stack *s, int size, int big);
+int		*stack_to_array(t_stack *s, int size);
 
 #endif
