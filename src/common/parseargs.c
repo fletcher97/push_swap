@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 01:28:21 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/21 19:10:39 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/21 21:05:42 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	check_int(const char *n)
 static int	check_dups(t_ps *ps)
 {
 	int	*arr;
-	int i;
+	int	i;
 
 	arr = stack_to_array(ps->a, ps->a->size);
 	quicksorti(arr, 0, ps->a->size - 1);
@@ -51,14 +51,14 @@ static int	check_dups(t_ps *ps)
 		if (arr[i] == arr[i + 1])
 		{
 			i = -1;
-			break;
+			break ;
 		}
 	}
 	ft_free(arr);
 	return (i != -1);
 }
 
-t_ps	*parseArgs(int argc, const char *argv[])
+t_ps	*parse_args(int argc, const char *argv[])
 {
 	t_ps		*ret;
 	t_content	tmp;
@@ -73,12 +73,9 @@ t_ps	*parseArgs(int argc, const char *argv[])
 	while (argc--)
 	{
 		if (!check_int(argv[argc]))
-		{
-			ft_stackdestroy(ret->b, NULL);
-			ft_stackdestroy(ret->a, NULL);
-			ft_free(ret);
+			destroy_ps(ret);
+		if (!check_int(argv[argc]))
 			return (NULL);
-		}
 		tmp.i = ft_atoi(argv[argc]);
 		ft_stackpush(ret->a, tmp);
 	}
@@ -90,7 +87,7 @@ t_ps	*parseArgs(int argc, const char *argv[])
 	return (ret);
 }
 
-t_ps	*parseString(const char *s)
+t_ps	*parse_string(const char *s)
 {
 	t_ps	*ret;
 	char	**nums;
@@ -100,7 +97,7 @@ t_ps	*parseString(const char *s)
 	count = 0;
 	while (nums[count])
 		count++;
-	ret = parseArgs(count, (const char **)nums);
+	ret = parse_args(count, (const char **)nums);
 	count = 0;
 	while (nums[count])
 		ft_free(nums[count++]);
