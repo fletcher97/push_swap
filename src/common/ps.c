@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ps.c                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/21 21:05:19 by mgueifao          #+#    #+#             */
+/*   Updated: 2021/08/21 21:05:20 by mgueifao         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_stdlib.h"
 #include "ft_stack.h"
 #include "actions.h"
@@ -18,13 +30,13 @@ t_ps	*dup_ps(t_ps *ps)
 
 void	destroy_ps(t_ps *ps)
 {
-	if(ps->a)
+	if (ps->a)
 		ft_stackdestroy(ps->a, NULL);
-	if(ps->b)
+	if (ps->b)
 		ft_stackdestroy(ps->b, NULL);
-	if(ps->as)
+	if (ps->as)
 		ft_stackdestroy(ps->as, NULL);
-	if(ps->bs)
+	if (ps->bs)
 		ft_stackdestroy(ps->bs, NULL);
 	ft_free(ps);
 }

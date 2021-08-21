@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 05:16:03 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/05/31 01:39:01 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/21 21:03:54 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ int	main(int argc, char const *argv[])
 	if (argc < 2)
 		return (0);
 	if (argc == 2)
-		ps = parseString(argv[1]);
+		ps = parse_string(argv[1]);
 	else
-		ps = parseArgs(argc - 1, &(argv[1]));
+		ps = parse_args(argc - 1, &(argv[1]));
 	if (!ps)
 		ft_putstr_fd("Error\n", STDERR);
 	if (!ps)
