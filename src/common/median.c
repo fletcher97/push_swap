@@ -6,7 +6,7 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 00:58:54 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/14 15:36:59 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/21 18:56:03 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	*stack_to_array_bot(t_stack *s, int size)
 	return (ret);
 }
 
-static int	*stack_to_array(t_stack *s, int size)
+int	*stack_to_array(t_stack *s, int size)
 {
 	int				*ret;
 	t_stack_elem	*curr;

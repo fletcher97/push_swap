@@ -18,9 +18,13 @@ t_ps	*dup_ps(t_ps *ps)
 
 void	destroy_ps(t_ps *ps)
 {
-	ft_stackdestroy(ps->a, NULL);
-	ft_stackdestroy(ps->b, NULL);
-	ft_stackdestroy(ps->as, NULL);
-	ft_stackdestroy(ps->bs, NULL);
+	if(ps->a)
+		ft_stackdestroy(ps->a, NULL);
+	if(ps->b)
+		ft_stackdestroy(ps->b, NULL);
+	if(ps->as)
+		ft_stackdestroy(ps->as, NULL);
+	if(ps->bs)
+		ft_stackdestroy(ps->bs, NULL);
 	ft_free(ps);
 }

@@ -6,14 +6,16 @@
 /*   By: mgueifao <mgueifao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/31 01:28:21 by mgueifao          #+#    #+#             */
-/*   Updated: 2021/08/14 18:32:45 by mgueifao         ###   ########.fr       */
+/*   Updated: 2021/08/21 19:10:39 by mgueifao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_sort.h"
 #include "ft_string.h"
 #include "ft_stdlib.h"
 #include "ft_ctype.h"
 #include "actions.h"
+#include "common.h"
 
 static int	check_int(const char *n)
 {
@@ -36,6 +38,26 @@ static int	check_int(const char *n)
 	return (1);
 }
 
+static int	check_dups(t_ps *ps)
+{
+	int	*arr;
+	int i;
+
+	arr = stack_to_array(ps->a, ps->a->size);
+	quicksorti(arr, 0, ps->a->size - 1);
+	i = -1;
+	while (++i < (int) ps->a->size - 1)
+	{
+		if (arr[i] == arr[i + 1])
+		{
+			i = -1;
+			break;
+		}
+	}
+	ft_free(arr);
+	return (i != -1);
+}
+
 t_ps	*parseArgs(int argc, const char *argv[])
 {
 	t_ps		*ret;
@@ -46,6 +68,8 @@ t_ps	*parseArgs(int argc, const char *argv[])
 		return (NULL);
 	ret->a = ft_stacknew();
 	ret->b = ft_stacknew();
+	ret->bs = NULL;
+	ret->as = NULL;
 	while (argc--)
 	{
 		if (!check_int(argv[argc]))
@@ -57,6 +81,11 @@ t_ps	*parseArgs(int argc, const char *argv[])
 		}
 		tmp.i = ft_atoi(argv[argc]);
 		ft_stackpush(ret->a, tmp);
+	}
+	if (!check_dups(ret))
+	{
+		destroy_ps(ret);
+		return (NULL);
 	}
 	return (ret);
 }
